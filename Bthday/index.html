@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday My Love ❤️</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@300;400;600&display=swap');
+
+        :root {
+            --primary-pink: #ffb7c5;
+            --soft-white: #fff9f9;
+            --text-dark: #4a4a4a;
+            --accent-gold: #d4af37;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(135deg, #fff0f3, #ffe6e9);
+            color: var(--text-dark);
+            min-height: 100vh;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Modal Styles */
+        #modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 240, 245, 0.95);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            transition: opacity 1s ease-out, visibility 1s ease-out;
+        }
+
+        .modal-content {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 3rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            max-width: 90%;
+            width: 500px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .modal-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5rem;
+            color: #d63384;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .modal-subtext {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .btn-surprise {
+            background: linear-gradient(45deg, #ff9a9e, #fad0c4);
+            border: none;
+            padding: 1rem 2.5rem;
+            font-size: 1.2rem;
+            color: white;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 105, 180, 0.3);
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 600;
+        }
+
+        .btn-surprise:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 20px rgba(255, 105, 180, 0.4);
+        }
+
+        /* Main Content */
+        #main-content {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 1.5s ease-in;
+            width: 100%;
+            max-width: 1200px;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .header-section {
+            text-align: center;
+            margin: 4rem 0;
+            animation: fadeInDown 2s ease-out;
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4rem;
+            color: #d63384;
+            margin-bottom: 1rem;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #888;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* Photo Grid */
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            width: 100%;
+            padding: 1rem;
+            margin-bottom: 4rem;
+        }
+
+        .photo-card {
+            background: white;
+            padding: 15px;
+            padding-bottom: 25px;
+            /* Polaroid style */
+            border-radius: 4px;
+            box-shadow: var(--shadow);
+            transition: transform 0.4s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transform: rotate(var(--rotation));
+        }
+
+        .photo-card:hover {
+            transform: scale(1.05) rotate(0deg) !important;
+            z-index: 10;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .photo-card img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 2px;
+            display: block;
+        }
+
+        /* Emotional Message */
+        .message-section {
+            text-align: center;
+            max-width: 700px;
+            margin: 2rem auto;
+            padding: 3rem;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+        }
+
+        .message-text {
+            font-size: 1.4rem;
+            line-height: 1.8;
+            color: #555;
+            font-style: italic;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: auto;
+            padding: 2rem;
+            font-size: 0.9rem;
+            color: #888;
+            text-align: center;
+        }
+
+        /* Animations */
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUpCard {
+            from {
+                opacity: 0;
+                transform: translateY(40px) rotate(var(--rotation));
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) rotate(var(--rotation));
+            }
+        }
+
+        /* Updates for interactions */
+        .photo-card {
+            opacity: 0;
+            /* Hidden initially */
+            animation: fadeInUpCard 1s ease-out forwards;
+            /* Animation play state is paused until we add a class, or we just rely on main container reveal */
+            animation-play-state: paused;
+        }
+
+        /* Letter Modal Styles */
+        .letter-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(2px);
+            z-index: 2000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .letter-paper {
+            background: #fffdf0;
+            width: 90%;
+            max-width: 600px;
+            padding: 40px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            transform: scale(0.8);
+            transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            background-image: linear-gradient(#999 0.05em, transparent 0.1em);
+            background-size: 100% 2em;
+            line-height: 2em;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .letter-content {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8rem;
+            color: #555;
+            text-align: left;
+        }
+
+        .close-letter {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #aaa;
+            font-family: sans-serif;
+        }
+
+        .btn-gift {
+            background: linear-gradient(45deg, #d4af37, #f6e27a);
+            border: none;
+            padding: 1rem 3rem;
+            font-size: 1.3rem;
+            color: #5a4a1b;
+            border-radius: 50px;
+            cursor: pointer;
+            margin-top: 2rem;
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 700;
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+            transition: transform 0.3s ease;
+        }
+
+        .btn-gift:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.6);
+        }
+
+        /* Responsive Improvements */
+        @media (max-width: 768px) {
+            .modal-content {
+                padding: 2rem 1.5rem;
+                width: 95%;
+            }
+
+            .modal-title {
+                font-size: 2.2rem;
+            }
+
+            h1 {
+                font-size: 2.8rem;
+            }
+
+            .photo-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .photo-card {
+                transform: rotate(0deg) !important;
+                margin-bottom: 0.5rem;
+            }
+
+            .photo-card img {
+                height: 300px;
+            }
+
+            .letter-paper {
+                padding: 25px 15px;
+                width: 95%;
+            }
+
+            .letter-content {
+                font-size: 1.2rem;
+            }
+
+            .timeline-item {
+                width: 100% !important;
+                left: 0 !important;
+                padding-left: 45px !important;
+                padding-right: 15px !important;
+                text-align: left !important;
+                margin-bottom: 20px;
+            }
+
+            .timeline-content {
+                width: 100% !important;
+            }
+
+            .timeline-dot {
+                left: -10px !important;
+            }
+
+            .timeline::after {
+                left: 20px !important;
+                margin-left: 0;
+            }
+
+            .left .timeline-dot,
+            .right .timeline-dot {
+                left: 10px !important;
+            }
+        }
+
+        /* Floating Hearts */
+        .heart {
+            position: fixed;
+            bottom: -10vh;
+            color: #ffb7c5;
+            opacity: 0;
+            font-size: 1.5rem;
+            animation: floatUp 10s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: translateY(-120vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Confetti */
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #f00;
+            animation: confetti-fall 3s linear forwards;
+        }
+
+        @keyframes confetti-fall {
+            0% {
+                transform: translateY(-10vh) rotate(0deg);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(110vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        /* Timeline Styles */
+        .timeline-section {
+            width: 100%;
+            max-width: 800px;
+            margin: 4rem auto;
+            position: relative;
+            padding: 20px;
+        }
+
+        .timeline {
+            position: relative;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: #ffb7c5;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease-out;
+        }
+
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .left {
+            left: 0;
+            text-align: right;
+        }
+
+        .right {
+            left: 50%;
+            text-align: left;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            border: 4px solid #d63384;
+            border-radius: 50%;
+            top: 15px;
+            z-index: 10;
+        }
+
+        .left .timeline-dot {
+            right: -14px;
+        }
+
+        .right .timeline-dot {
+            left: -14px;
+        }
+
+        .timeline-content {
+            padding: 20px;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .timeline-year {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8rem;
+            color: #d63384;
+            margin-bottom: 5px;
+        }
+
+        .timeline-desc {
+            font-size: 1rem;
+            color: #666;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Audio Player -->
+    <audio id="bg-music" loop>
+        <source src="Raataan Lambiyan.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Initial Popup Modal -->
+    <div id="modal">
+        <div class="modal-content">
+            <h2 class="modal-title">Happy Birthday Sneha ❤️</h2>
+            <p class="modal-subtext">Today the world became beautiful because you were born.</p>
+            <button class="btn-surprise" onclick="startExperience()">Open Your Surprise 🎁</button>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div id="main-content">
+        <header class="header-section">
+            <h1>Happy Birthday Sneha!</h1>
+            <p class="subtitle">Celebrating You</p>
+        </header>
+
+        <div class="photo-grid">
+            <div class="photo-card" style="--rotation: -2deg; animation-delay: 0.2s">
+                <img src="WhatsApp Image 2026-02-12 at 8.23.31 PM.jpeg" alt="Sneha photo 1">
+            </div>
+            <div class="photo-card" style="--rotation: 3deg; animation-delay: 0.6s">
+                <img src="WhatsApp Image 2026-02-12 at 8.24.05 PM.jpeg" alt="Sneha photo 2">
+            </div>
+            <div class="photo-card" style="--rotation: -3deg; animation-delay: 1.0s">
+                <img src="WhatsApp Image 2026-02-12 at 8.26.10 PM.jpeg" alt="Sneha photo 3">
+            </div>
+            <div class="photo-card" style="--rotation: 2deg; animation-delay: 1.4s">
+                <img src="WhatsApp Image 2026-02-12 at 8.28.15 PM.jpeg" alt="Sneha photo 4">
+            </div>
+            <div class="photo-card" style="--rotation: -1deg; animation-delay: 1.8s">
+                <img src="WhatsApp Image 2026-02-12 at 8.29.23 PM.jpeg" alt="Sneha photo 5">
+            </div>
+            <div class="photo-card" style="--rotation: 2deg; animation-delay: 2.2s">
+                <img src="WhatsApp Image 2026-02-12 at 8.31.10 PM.jpeg" alt="Sneha photo 6">
+            </div>
+        </div>
+
+        <div class="message-section">
+            <p class="message-text">
+                "Every picture with you is my favorite memory.<br>
+                I am lucky to celebrate another year of your beautiful life."
+            </p>
+        </div>
+
+        <!-- Timeline Section -->
+        <div class="timeline-section">
+            <h2
+                style="font-family: 'Dancing Script', cursive; font-size: 3rem; color: #d63384; text-align: center; margin-bottom: 2rem;">
+                Our Beautiful Journey</h2>
+            <div class="timeline">
+                <div class="timeline-item left">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">2015-2026: The Beginning</div>
+                        <div class="timeline-desc">9th std, Geometry unit test me fail hona... uske baad tujhe geometry
+                            sikhana, tera next exam me pass ho jana aur tere bench ke peeche baithna. Every moment is
+                            memorable. ❤️</div>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">2016-2017: 10th Standard</div>
+                        <div class="timeline-desc">Exam preparation me tere sath roz class me extra time baith kar paper
+                            solve karna. Stairs pe tujhe propose karna aur tera itne nakhre dikhana! Ros class me piche
+                            mud mud kar tujhe dekhna... Shubhangi wala incident yaad hai? 😉</div>
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">2017-2018: 11th Standard</div>
+                        <div class="timeline-desc">Thane college me admission leke tujhe bataya nahi. Roz main gate pe
+                            tera wait karna, bike se utarte hue tujhe dekh kar heartbeat badh jana. Wo bus me takle ke
+                            upar chocolate fekna! 😂</div>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">2018-2019: 12th & Prelims</div>
+                        <div class="timeline-desc">Hum competition kar rahe the during prelims. Waha bhi maine tujhe
+                            bahot pareshan kiya hai!</div>
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">2019-2020: Allen Drop Year</div>
+                        <div class="timeline-desc">I think yaha hamari bonding bahot badh gayi. Same engineering college
+                            me same branch milna was a miracle. ✨</div>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">2020-2021: First Year Engineering</div>
+                        <div class="timeline-desc">Tere birthday pe Upvan boat ride kiya, yaad hai? Isi saal tune haa
+                            bola tha. College bunk maar ke movies dekhne jana... pure magic.</div>
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">Last Year: Udaipur Trip</div>
+                        <div class="timeline-desc">Candle light dinner, Ghat pe music, aur hum. One of the best trips
+                            ever.</div>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">Last Month: Jaipur Trip</div>
+                        <div class="timeline-desc">Fantastic moments aur beautiful photos. Har trip tere saath special
+                            hai.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button class="btn-gift" onclick="showGiftMessage()">Click Here for Gifts 🎁</button>
+
+        <!-- Gift Message Overlay -->
+        <!-- Gift Message Overlay -->
+        <div id="gift-overlay" class="letter-overlay">
+            <div class="letter-paper"
+                style="text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                <span class="close-letter" onclick="closeGiftMessage()">&times;</span>
+                <div class="letter-content" style="text-align: center;">
+                    <p style="font-size: 1.6rem; color: #d63384; margin-bottom: 20px;">
+                        "Tumhari muskurahat meri pehchaan hai,<br>
+                        Tumhari khushi meri jaan hai." ❤️
+                    </p>
+                    <p style="font-size: 1.6rem; color: #d63384; margin-bottom: 30px;">
+                        "Hazaron khwahishein aisi ki har khwahish pe dum nikle,<br>
+                        Bahut nikle mere armaan, lekin phir bhi kam nikle."
+                    </p>
+                    <div
+                        style="background: #ffe6e9; padding: 20px; border-radius: 10px; border: 2px dashed #ffb7c5; margin-top: 10px;">
+                        <h3 style="font-family: 'Quicksand', sans-serif; color: #333; margin-bottom: 10px;">🎁 Special
+                            Surprise 🎁</h3>
+                        <p style="font-family: 'Quicksand', sans-serif; font-size: 1.2rem; color: #555;">
+                            Your special gift is on its way!<br>
+                            It will be delivered to you in <strong>Vadodara</strong>. 🚚💨
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <footer>
+            Made with love by Priyanshu ❤️
+        </footer>
+    </div>
+
+    <script>
+        function startExperience() {
+            const modal = document.getElementById('modal');
+            const mainContent = document.getElementById('main-content');
+            const audio = document.getElementById('bg-music');
+
+            // Fade out modal
+            modal.style.opacity = '0';
+            modal.style.visibility = 'hidden';
+
+            // Play music (handle autoplay policy)
+            audio.volume = 0.4; // Soft start
+            audio.play().catch(error => {
+                console.log("Audio playback failed (interaction needed):", error);
+            });
+
+            // Show main content
+            setTimeout(() => {
+                modal.style.display = 'none';
+                mainContent.style.visibility = 'visible';
+                mainContent.style.opacity = '1';
+
+                // Trigger animations
+                const photos = document.querySelectorAll('.photo-card');
+                photos.forEach(photo => {
+                    photo.style.animationPlayState = 'running';
+                });
+
+                // Smooth scroll to top might happen naturally since we handle display
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+
+                // Start effects
+                createHearts();
+                fireConfetti();
+
+                // Show timeline items on scroll
+                window.addEventListener('scroll', checkTimeline);
+                checkTimeline(); // Check initial state
+
+            }, 800);
+        }
+
+        function createHearts() {
+            const container = document.body;
+            for (let i = 0; i < 30; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.className = 'heart';
+                    heart.innerHTML = '❤️';
+                    heart.style.left = Math.random() * 100 + 'vw';
+                    heart.style.animationDuration = (Math.random() * 3 + 7) + 's';
+                    heart.style.fontSize = (Math.random() * 1 + 1) + 'rem';
+                    container.appendChild(heart);
+                }, i * 300);
+            }
+        }
+
+        function fireConfetti() {
+            const colors = ['#ff69b4', '#ffd700', '#ffb7c5', '#fff', '#ff4d4d'];
+            for (let i = 0; i < 100; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                document.body.appendChild(confetti);
+            }
+        }
+
+        function checkTimeline() {
+            const items = document.querySelectorAll('.timeline-item');
+            const triggerBottom = window.innerHeight * 0.8;
+
+            items.forEach(item => {
+                const itemTop = item.getBoundingClientRect().top;
+                if (itemTop < triggerBottom) {
+                    item.classList.add('visible');
+                }
+            });
+        }
+
+        function showGiftMessage() {
+            const overlay = document.getElementById('gift-overlay');
+            const card = document.querySelector('.gift-card');
+            overlay.style.display = 'flex';
+            setTimeout(() => {
+                overlay.style.opacity = '1';
+                card.style.transform = 'scale(1)';
+            }, 10);
+
+            // Fire more confetti for the gift reveal
+            fireConfetti();
+        }
+
+        function closeGiftMessage() {
+            const overlay = document.getElementById('gift-overlay');
+            const card = document.querySelector('.gift-card');
+            overlay.style.opacity = '0';
+            card.style.transform = 'scale(0.8)';
+            setTimeout(() => {
+                overlay.style.display = 'none';
+            }, 500);
+        }
+    </script>
+</body>
+
+</html>
